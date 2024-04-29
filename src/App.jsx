@@ -12,6 +12,7 @@ function App() {
   const [finalScore, setFinalScore] = useState(0);
 
   function handleReset() {
+    setFinalScore(score);
     setChoices(characters);
     setScore(0);
     setGameOver(true);
@@ -19,7 +20,6 @@ function App() {
 
   useEffect(() => {
     setBestScore((prevBestScore) => Math.max(score, prevBestScore));
-    setFinalScore(score);
   }, [score]);
 
   function gameReset() {
@@ -45,7 +45,7 @@ function App() {
       <div className="game-won">
         <h1>7 Crore</h1>
         <h2>👉🧠</h2>
-        <h2>Your Score: {finalScore}</h2>
+        <h2>Your Score: {score}</h2>
         <button onClick={gameRestart}>Restart</button>
       </div>
     );
@@ -53,7 +53,7 @@ function App() {
   return (
     <>
       <ScoreBoard score={score} bestScore={bestScore} />
-      <GameBoard score={score} setScore={setScore} choices={choices} setChoices={setChoices} handleReset={handleReset} />
+      <GameBoard score={score} setScore={setScore} choices={choices} setChoices={setChoices} handleReset={handleReset} setFinalScore={setFinalScore} />
     </>
   );
 }
