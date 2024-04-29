@@ -13,13 +13,13 @@ function App() {
 
   function handleReset() {
     setChoices(characters);
-    setFinalScore(score);
     setScore(0);
     setGameOver(true);
   }
 
   useEffect(() => {
     setBestScore((prevBestScore) => Math.max(score, prevBestScore));
+    setFinalScore(score);
   }, [score]);
 
   function gameReset() {
